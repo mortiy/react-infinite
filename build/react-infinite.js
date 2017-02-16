@@ -394,7 +394,6 @@ var Infinite = React.createClass({
   render: function render() {
     var _this2 = this;
 
-    console.log('---', 123123);
     var displayables;
     if (this.state.numberOfChildren > 1) {
       displayables = this.computedProps.children.slice(this.state.displayIndexStart, this.state.displayIndexEnd + 1);
