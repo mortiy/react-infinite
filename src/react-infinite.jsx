@@ -49,6 +49,8 @@ var Infinite = React.createClass({
     isInfiniteLoading: React.PropTypes.bool,
     timeScrollStateLastsForAfterUserScrolls: React.PropTypes.number,
 
+    canLoadMore: React.PropTypes.bool,
+
     className: React.PropTypes.string,
 
     styles: React.PropTypes.shape({
@@ -97,6 +99,7 @@ var Infinite = React.createClass({
 
       isInfiniteLoading: false,
       timeScrollStateLastsForAfterUserScrolls: 150,
+      canLoadMore: true,
 
       className: '',
 
@@ -376,6 +379,8 @@ var Infinite = React.createClass({
   },
 
   onInfiniteLoad() {
+    if (!this.props.canLoadMore) return
+
     this.setState({ isInfiniteLoading: true });
     this.computedProps.onInfiniteLoad();
   },
@@ -407,6 +412,7 @@ var Infinite = React.createClass({
   },
 
   render(): React.Element<any, any, any> {
+    console.log('---', 123123)
     var displayables;
     if (this.state.numberOfChildren > 1) {
       displayables = this.computedProps.children.slice(this.state.displayIndexStart,
